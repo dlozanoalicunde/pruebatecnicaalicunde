@@ -1,1 +1,3 @@
-<p>data-list works!</p>
+@for (retailer of retailers; track retailer.code) {
+  <p>{{ retailer.name }}</p>
+}
