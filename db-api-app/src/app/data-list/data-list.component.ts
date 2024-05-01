@@ -4,6 +4,8 @@ import { DbDataApiService } from '../services/db-data-api/db-data-api.service';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort, Sort } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
@@ -11,7 +13,13 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.scss'],
   standalone: true,
-  imports: [MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+  ],
 })
 export class DataListComponent implements OnInit, AfterViewInit {
   retailers: Retailer[] = [];
@@ -53,5 +61,12 @@ export class DataListComponent implements OnInit, AfterViewInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  applyFilter(event: KeyboardEvent) {
+    let filterValue = (event.target as HTMLInputElement).value;
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 }
