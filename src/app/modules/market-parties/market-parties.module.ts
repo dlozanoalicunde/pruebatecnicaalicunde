@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { heroArrowDown, heroArrowUp } from '@ng-icons/heroicons/outline';
+import { NgIconsModule } from '@ng-icons/core';
 
 // Modules
 import { SharedModule } from '@shared/shared.module';
@@ -9,12 +13,14 @@ import { BalanceResponsiblePartiesComponent } from './pages/balance-responsible-
 
 // Services
 import { BalanceResponsiblePartiesService } from './services/balance-responsible-parties.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+
+// Pipes
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
-    BalanceResponsiblePartiesComponent
+    BalanceResponsiblePartiesComponent,
+    OrderByPipe
   ],
   providers: [
     BalanceResponsiblePartiesService,
@@ -24,7 +30,11 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     SharedModule, 
     MarketPartiesRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgIconsModule.withIcons({ 
+      heroArrowDown, 
+      heroArrowUp 
+    }),
   ]
 })
 export class MarketPartiesModule { }

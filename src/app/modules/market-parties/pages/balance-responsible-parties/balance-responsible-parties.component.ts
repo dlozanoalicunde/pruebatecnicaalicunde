@@ -11,8 +11,10 @@ import { RESPONSIBLE_PARTIES_DATA } from '@data/constants/mock/responsible_parti
   styleUrl: './balance-responsible-parties.component.scss'
 })
 export class BalanceResponsiblePartiesComponent implements OnInit {
-  
   responsible_parties: ResponsiblePartiesInterface[];
+  sortBy: string = '';
+  sortOrder: number = 1;
+  orderIconToggle: boolean = false;
 
   constructor(
     private balanceResponsiblePartiesService: BalanceResponsiblePartiesService
@@ -27,5 +29,11 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
     //   .subscribe(data => this.responsible_parties = data);
 
     this.responsible_parties = RESPONSIBLE_PARTIES_DATA
+  }
+
+  sort(property: string) {
+    this.orderIconToggle = !this.orderIconToggle;
+    this.sortBy = property;
+    this.sortOrder = this.sortOrder * -1;
   }
 }

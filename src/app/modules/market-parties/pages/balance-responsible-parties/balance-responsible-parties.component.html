@@ -47,15 +47,46 @@
         <table class="w-full">
             <thead>
                 <tr class="text-secondary-dark">
-                    <th class="pb-3 text-start min-w-[250px]">BRP Name</th>
-                    <th class="pb-3 text-start min-w-[200px]">BRP Code</th>
-                    <th class="pb-3 text-start min-w-[100px]">Coding Scheme</th>
-                    <th class="pb-3 pr-12 text-start min-w-[150px]">Business ID</th>
-                    <th class="pb-3 pr-12 text-start min-w-[100px]">Country</th>
+                    <th 
+                        class="p-3 text-start min-w-[250px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('brpName')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'brpName' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        BRP Name
+                    </th>
+                    <th 
+                        class="p-3 text-start min-w-[200px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('brpCode')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'brpCode' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+
+                        BRP Code
+                    </th>
+                    <th 
+                        class="p-3 text-start min-w-[100px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('codingScheme')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'codingScheme' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Coding Scheme
+                    </th>
+                    <th 
+                        class="p-3 pr-12 text-start min-w-[150px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('businessId')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'businessId' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Business ID
+                    </th>
+                    <th 
+                        class="p-3 pr-12 text-start min-w-[100px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('country')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'country' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Country
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let partie of responsible_parties" class="border-b border-dashed last:border-b-0">
+                <tr *ngFor="let partie of responsible_parties | orderBy: sortBy: sortOrder" class="border-b border-dashed last:border-b-0">
                     <td class="text-start">
                         <span>{{ partie.brpName }}</span>
                     </td>
