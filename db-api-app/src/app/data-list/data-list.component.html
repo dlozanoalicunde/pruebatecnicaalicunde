@@ -1,8 +1,5 @@
 <div class="data-wrapper">
   <div class="table-container">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-    </mat-form-field>
     <div class="mat-elevation-z8">
       <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
   
@@ -34,5 +31,8 @@
       </mat-paginator>
     </div>
   </div>
-  <app-data-details [selectedData]="selectedRetailer"></app-data-details>
+  <div class="otro-wrapper">
+    <app-search-filter [data]="retailers" [columns]="columns" [filters]="filters"></app-search-filter>
+    <app-data-details [selectedData]="selectedRetailer"></app-data-details>
+  </div>
 </div>

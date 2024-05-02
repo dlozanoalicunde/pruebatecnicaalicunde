@@ -5,12 +5,18 @@
 }
 
 .table-container {
-  width: 65%;
+  width: 70%;
+}
+
+.otro-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 0 2em;
 }
 
 app-data-details {
-  width: 30%;
-  margin: 5% 0 0 5%;
+  margin-top: 5em;
 }
 
 mat-row.mat-mdc-row:hover {

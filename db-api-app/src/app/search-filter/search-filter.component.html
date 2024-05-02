@@ -1,1 +1,17 @@
-<p>search-filter works!</p>
+<div class="form">
+  <mat-form-field>
+    <input matInput (keyup)="setSearchValue($event)" placeholder="Search">
+  </mat-form-field>
+  <div class="filters-container">
+    @for (column of columns; track $index) {
+      <div class="filter-wrapper">
+        <mat-checkbox (change)="filterBy($event, column)">
+          {{column}}
+        </mat-checkbox>
+        <input matInput *ngIf="filters[column].checked" (keyup)="saveFilterValue($event, column)"
+          placeholder="{{column}} filter">
+      </div>
+    }
+  </div>
+  <button mat-flat-button (click)="setFilteredData()" color="primary">Apply filters</button>
+</div>
