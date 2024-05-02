@@ -1,4 +1,6 @@
-export const RESPONSIBLE_PARTIES_DATA = [
+import { ResponsiblePartiesInterface } from "@modules/market-parties/interfaces/ResponsibleParties.interface";
+
+export const RESPONSIBLE_PARTIES_DATA: ResponsiblePartiesInterface[] = [
     {
         "brpCode": "45X000000000174W",
         "brpName": "Aarhus Energy A/S",
