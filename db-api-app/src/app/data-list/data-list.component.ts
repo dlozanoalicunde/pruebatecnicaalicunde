@@ -32,7 +32,7 @@ import { Subject, takeUntil } from 'rxjs';
   ],
 })
 export class DataListComponent implements OnInit, AfterViewInit {
-  private unsubscribe = new Subject<void>();
+  unsubscribe = new Subject<void>();
 
   retailers: Retailer[] = [];
   filteredRetailers: Retailer[] = [];
@@ -58,18 +58,12 @@ export class DataListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.fetchData();
 
-    this.filterService
-      .getSearchData$()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe((data) => {
-        this.dataSource.filter = data;
-      });
-    this.filterService
-      .getFilteredData$()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe((filteredData) => {
-        this.dataSource.data = filteredData;
-      });
+    this.filterService.getSearchData$().subscribe((data) => {
+      this.dataSource.filter = data;
+    });
+    this.filterService.getFilteredData$().subscribe((filteredData) => {
+      this.dataSource.data = filteredData;
+    });
   }
 
   ngAfterViewInit(): void {
