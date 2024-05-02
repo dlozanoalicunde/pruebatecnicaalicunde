@@ -1,3 +1,78 @@
-<ul *ngFor="let partie of responsible_parties">
-    <li>{{ partie.brpName }}</li>
-</ul>
+<!-- card header -->
+<div class="py-5 flex justify-between items-stretch flex-wrap min-h-[30px] pb-0 bg-transparent">
+    <form action="#" method="POST" class="w-full">
+        <div class="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-5 justify-between">
+            <div>
+                <label for="brp-name" class="block text-sm font-semibold leading-6 text-gray-900">BRP Name</label>
+                <div class="mt-2.5">
+                    <input type="text" name="brp-name" id="brp-name" placeholder="Arhus Energy A/S" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="brp-code" class="block text-sm font-semibold leading-6 text-gray-900">BRP Code</label>
+                <div class="mt-2.5">
+                    <input type="text" name="brp-code" id="brp-code" placeholder="7080010013545" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="coding-scheme" class="block text-sm font-semibold leading-6 text-gray-900">Coding Scheme</label>
+                <div class="mt-2.5">
+                    <input type="text" name="coding-scheme" id="coding-scheme" placeholder="GS1" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="business-id" class="block text-sm font-semibold leading-6 text-gray-900">Business ID</label>
+                <div class="mt-2.5">
+                    <input type="text" name="business-id" id="business-id" placeholder="44422778" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+            <div>
+                <label for="country" class="block text-sm font-semibold leading-6 text-gray-900">Country</label>
+                <div class="mt-2.5">
+                    <input type="text" name="country" id="country" placeholder="DK" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end card header -->
+<!-- card body  -->
+<div class="mx-auto max-w-7xl py-5">
+    <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr class="text-secondary-dark">
+                    <th class="pb-3 text-start min-w-[250px]">BRP Name</th>
+                    <th class="pb-3 text-start min-w-[200px]">BRP Code</th>
+                    <th class="pb-3 text-start min-w-[100px]">Coding Scheme</th>
+                    <th class="pb-3 pr-12 text-start min-w-[150px]">Business ID</th>
+                    <th class="pb-3 pr-12 text-start min-w-[100px]">Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let partie of responsible_parties" class="border-b border-dashed last:border-b-0">
+                    <td class="text-start">
+                        <span>{{ partie.brpName }}</span>
+                    </td>
+                    <td class="text-start">
+                        <span>{{ partie.brpCode }}</span>
+                    </td>
+                    <td class="text-start">
+                        <span>{{ partie.codingScheme }}</span>
+                    </td>
+                    <td class="text-start">
+                        <span>{{ partie.businessId }}</span>
+                    </td>
+                    <td class="text-start">
+                        <span>{{ partie.country }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
