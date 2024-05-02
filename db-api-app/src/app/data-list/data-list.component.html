@@ -1,35 +1,38 @@
-<div class="table-container">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-  </mat-form-field>
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
-
-      <ng-container matColumnDef="code">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef> Code </th>
-        <td mat-cell *matCellDef="let retailer"> {{retailer.code}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let retailer"> {{retailer.name}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="country">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef> Country </th>
-        <td mat-cell *matCellDef="let retailer"> {{retailer.country}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="scheme">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef> Scheme </th>
-        <td mat-cell *matCellDef="let retailer"> {{retailer.scheme}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="columns"></tr>
-      <tr mat-row *matRowDef="let row; columns: columns"></tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons aria-label="Select page of periodic elements">
-    </mat-paginator>
+<div class="data-wrapper">
+  <div class="table-container">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+  
+        <ng-container matColumnDef="code">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Code </mat-header-cell>
+          <mat-cell *matCellDef="let retailer"> {{retailer.code}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="name">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let retailer"> {{retailer.name}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="country">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Country </mat-header-cell>
+          <mat-cell *matCellDef="let retailer"> {{retailer.country}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="scheme">
+          <mat-header-cell mat-sort-header *matHeaderCellDef> Scheme </mat-header-cell>
+          <mat-cell *matCellDef="let retailer"> {{retailer.scheme}} </mat-cell>
+        </ng-container>
+  
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns" (click)="onRowClicked(row)" [ngClass]="{ 'selectedRow' : row === selectedRetailer }"></mat-row>
+      </mat-table>
+  
+      <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
   </div>
+  <app-data-details [selectedData]="selectedRetailer"></app-data-details>
 </div>

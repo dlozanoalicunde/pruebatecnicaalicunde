@@ -7,6 +7,8 @@ import { MatSortModule, MatSort, Sort } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { CommonModule } from '@angular/common';
+import { DataDetailsComponent } from '../data-details/data-details.component';
 
 @Component({
   selector: 'app-data-list',
@@ -14,15 +16,18 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
   styleUrls: ['./data-list.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    DataDetailsComponent,
   ],
 })
 export class DataListComponent implements OnInit, AfterViewInit {
   retailers: Retailer[] = [];
+  selectedRetailer: any;
   columns: string[] = ['code', 'name', 'country', 'scheme'];
   dataSource = new MatTableDataSource<Retailer>();
 
@@ -68,5 +73,9 @@ export class DataListComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  onRowClicked(row: any) {
+    this.selectedRetailer = row;
   }
 }
