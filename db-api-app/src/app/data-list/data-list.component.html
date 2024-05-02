@@ -1,4 +1,4 @@
-<div class="data-wrapper">
+<div class="data-list__wrapper">
   <div class="table-container">
     <div class="mat-elevation-z8">
       <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
@@ -31,7 +31,7 @@
       </mat-paginator>
     </div>
   </div>
-  <div class="otro-wrapper">
+  <div class="right-content-container">
     <app-search-filter [data]="retailers" [columns]="columns" [filters]="filters"></app-search-filter>
     <app-data-details [selectedData]="selectedRetailer"></app-data-details>
   </div>

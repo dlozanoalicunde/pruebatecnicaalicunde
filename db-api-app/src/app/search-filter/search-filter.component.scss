@@ -1,11 +1,18 @@
-.filters-container {
-  display: flex;
-  flex-direction: column;
-}
+.search-filter {
+  &__wrapper {
+    
+    & .filters-container {
+      display: flex;
+      flex-direction: column;
 
-.filter-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 1em;
+      & .filter{
+        &__wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
 }

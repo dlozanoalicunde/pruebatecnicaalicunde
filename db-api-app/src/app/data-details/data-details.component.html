@@ -1,11 +1,11 @@
-<div class="details-wrapper">
+<div class="data-details__wrapper">
   <div *ngIf="selectedData; else noDataSelected" class="data-details">
-    <mat-form-field *ngFor="let dataField of selectedData | keyvalue">
+    <mat-form-field *ngFor="let dataField of selectedData | keyvalue" class="data-details__field">
       <mat-label>{{ dataField.key }}</mat-label>
       <input matInput disabled>{{ dataField.value }}
     </mat-form-field>
   </div>
   <ng-template #noDataSelected>
-    <p>No data selected. Please, chose a row to see details</p>
+    <p class="data-details__no-data">No data selected. Please, chose a row to see details</p>
   </ng-template>
 </div>
