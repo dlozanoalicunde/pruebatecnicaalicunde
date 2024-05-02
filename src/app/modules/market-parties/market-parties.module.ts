@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { heroArrowDown, heroArrowUp } from '@ng-icons/heroicons/outline';
 import { NgIconsModule } from '@ng-icons/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 // Modules
 import { SharedModule } from '@shared/shared.module';
@@ -35,6 +36,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
       heroArrowDown, 
       heroArrowUp 
     }),
+    NgxPaginationModule,
   ]
 })
 export class MarketPartiesModule { }

@@ -86,24 +86,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let partie of responsible_parties | orderBy: sortBy: sortOrder" class="border-b border-dashed last:border-b-0">
+                <tr *ngFor="let brp of responsible_parties | orderBy: sortBy: sortOrder | paginate: { itemsPerPage: pageSize, currentPage: currentPage } let i=index" class="border-b border-dashed last:border-b-0">
                     <td class="text-start">
-                        <span>{{ partie.brpName }}</span>
+                        <span>{{ brp.brpName }}</span>
                     </td>
                     <td class="text-start">
-                        <span>{{ partie.brpCode }}</span>
+                        <span>{{ brp.brpCode }}</span>
                     </td>
                     <td class="text-start">
-                        <span>{{ partie.codingScheme }}</span>
+                        <span>{{ brp.codingScheme }}</span>
                     </td>
                     <td class="text-start">
-                        <span>{{ partie.businessId }}</span>
+                        <span>{{ brp.businessId }}</span>
                     </td>
                     <td class="text-start">
-                        <span>{{ partie.country }}</span>
+                        <span>{{ brp.country }}</span>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="pt-5">
+            <div class="hidden sm:flex sm:flex-1 sm:items-end sm:justify-between">
+                <div>
+                    <p class="text-sm text-gray-700">
+                        <span class="font-medium">Total items: {{ totalItems }}</span>
+                    </p>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="currentPage = $event" />
+        </div>
     </div>
 </div>

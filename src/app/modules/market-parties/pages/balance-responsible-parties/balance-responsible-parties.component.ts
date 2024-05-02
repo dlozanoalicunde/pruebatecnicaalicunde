@@ -16,6 +16,10 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
   sortOrder: number = 1;
   orderIconToggle: boolean = false;
 
+  currentPage: number = 1;
+  pageSize: number = 10;
+  totalItems: number = 0;
+
   constructor(
     private balanceResponsiblePartiesService: BalanceResponsiblePartiesService
   ){
@@ -28,12 +32,17 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
     //   .getResponsibleParties()
     //   .subscribe(data => this.responsible_parties = data);
 
-    this.responsible_parties = RESPONSIBLE_PARTIES_DATA
+    this.responsible_parties = RESPONSIBLE_PARTIES_DATA;
+    this.totalItems = this.responsible_parties.length;
   }
 
   sort(property: string) {
     this.orderIconToggle = !this.orderIconToggle;
     this.sortBy = property;
     this.sortOrder = this.sortOrder * -1;
+  }
+
+  pageChanged(event: any) {
+    this.currentPage = event;
   }
 }
