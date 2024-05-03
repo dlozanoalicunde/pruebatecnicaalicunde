@@ -97,25 +97,23 @@
                 </tr>
             </thead>
             <tbody>
-                <div *ngIf="filteredItems.length > 0">
-                    <tr *ngFor="let brp of filteredItems | orderBy: sortBy: sortOrder | paginate: { itemsPerPage: pageSize, currentPage: currentPage } let i=index" class="border-b border-dashed last:border-b-0">
-                        <td class="text-start p-3">
-                            <span>{{ brp.brpName }}</span>
-                        </td>
-                        <td class="text-start p-3">
-                            <span>{{ brp.brpCode }}</span>
-                        </td>
-                        <td class="text-start p-3">
-                            <span>{{ brp.codingScheme }}</span>
-                        </td>
-                        <td class="text-start p-3">
-                            <span>{{ brp.businessId }}</span>
-                        </td>
-                        <td class="text-start p-3">
-                            <span>{{ brp.country }}</span>
-                        </td>
-                    </tr>
-                </div>
+                <tr *ngFor="let brp of filteredItems | orderBy: sortBy: sortOrder | paginate: { itemsPerPage: pageSize, currentPage: currentPage } let i=index" class="border-b border-dashed last:border-b-0">
+                    <td class="text-start p-3">
+                        <span>{{ brp.brpName }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.brpCode }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.codingScheme }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.businessId }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.country }}</span>
+                    </td>
+                </tr>
                 <div *ngIf="filteredItems.length == 0">
                     <h1>NOT FOUND ITEMS</h1>
                 </div>
