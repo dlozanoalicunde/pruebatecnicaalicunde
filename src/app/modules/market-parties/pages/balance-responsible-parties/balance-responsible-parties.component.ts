@@ -12,6 +12,7 @@ import { RESPONSIBLE_PARTIES_DATA } from '@data/constants/mock/responsible_parti
 })
 export class BalanceResponsiblePartiesComponent implements OnInit {
   responsible_parties: ResponsiblePartiesInterface[];
+  filteredItems: ResponsiblePartiesInterface[];
   sortBy: string = '';
   sortOrder: number = 1;
   orderIconToggle: boolean = false;
@@ -20,10 +21,17 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
   pageSize: number = 10;
   totalItems: number = 0;
 
+  inputBrpName: string = '';
+  inputBrpCode: string = '';
+  inputCodingScheme: string = '';
+  inputBusinessId: string = '';
+  inputCountry: string = '';
+
   constructor(
     private balanceResponsiblePartiesService: BalanceResponsiblePartiesService
   ){
     this.responsible_parties = [];
+    this.filteredItems = [];
   }
 
   ngOnInit() {
@@ -33,6 +41,7 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
     //   .subscribe(data => this.responsible_parties = data);
 
     this.responsible_parties = RESPONSIBLE_PARTIES_DATA;
+    this.filteredItems = this.responsible_parties;
     this.totalItems = this.responsible_parties.length;
   }
 
@@ -44,5 +53,21 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
 
   pageChanged(event: any) {
     this.currentPage = event;
+  }
+
+  filterByBrpName() {
+      this.filteredItems = this.responsible_parties.filter(item => item.brpName.includes(this.inputBrpName))
+  }
+  filterByBrpCode() {
+      this.filteredItems = this.responsible_parties.filter(item => item.brpCode.includes(this.inputBrpCode))
+  }
+  filterByCodingScheme() {
+      this.filteredItems = this.responsible_parties.filter(item => item.codingScheme.includes(this.inputCodingScheme))
+  }
+  filterByBusinessId() {
+      this.filteredItems = this.responsible_parties.filter(item => item.businessId.includes(this.inputBusinessId))
+  }
+  filterByCountry() {
+      this.filteredItems = this.responsible_parties.filter(item => item.country.includes(this.inputCountry))
   }
 }

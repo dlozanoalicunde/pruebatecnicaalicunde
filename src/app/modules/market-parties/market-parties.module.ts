@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { heroArrowDown, heroArrowUp } from '@ng-icons/heroicons/outline';
+import { heroArrowDown, heroArrowUp, heroMagnifyingGlass } from '@ng-icons/heroicons/outline';
 import { NgIconsModule } from '@ng-icons/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -17,6 +17,7 @@ import { BalanceResponsiblePartiesService } from './services/balance-responsible
 
 // Pipes
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { OrderByPipe } from './pipes/order-by.pipe';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     SharedModule, 
     MarketPartiesRoutingModule,
     HttpClientModule,
     NgIconsModule.withIcons({ 
       heroArrowDown, 
-      heroArrowUp 
+      heroArrowUp,
+      heroMagnifyingGlass
     }),
     NgxPaginationModule,
   ]
