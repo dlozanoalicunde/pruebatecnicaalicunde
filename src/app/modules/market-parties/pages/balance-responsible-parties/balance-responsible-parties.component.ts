@@ -40,20 +40,24 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
     //   .getResponsibleParties()
     //   .subscribe(data => this.responsible_parties = data);
 
+    // Aquí iria el resultado de la petición HTTP en lugar del mock
     this.responsible_parties = RESPONSIBLE_PARTIES_DATA;
     this.filteredItems = this.responsible_parties;
   }
 
+  // Ordenamiento manual
   sort(property: string) {
     this.orderIconToggle = !this.orderIconToggle;
     this.sortBy = property;
     this.sortOrder = this.sortOrder * -1;
   }
 
+  // Evento para el Paginator
   pageChanged(event: any) {
     this.currentPage = event;
   }
 
+  // Aquí podría llamar a un servicio de filtrado independiente
   filterByBrpName() {
     this.filteredItems = this.responsible_parties.filter(
       item => item.brpName.toLowerCase().includes(
