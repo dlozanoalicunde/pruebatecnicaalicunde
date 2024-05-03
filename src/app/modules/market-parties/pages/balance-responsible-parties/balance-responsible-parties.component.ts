@@ -42,7 +42,6 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
 
     this.responsible_parties = RESPONSIBLE_PARTIES_DATA;
     this.filteredItems = this.responsible_parties;
-    this.totalItems = this.responsible_parties.length;
   }
 
   sort(property: string) {
@@ -56,18 +55,42 @@ export class BalanceResponsiblePartiesComponent implements OnInit {
   }
 
   filterByBrpName() {
-      this.filteredItems = this.responsible_parties.filter(item => item.brpName.includes(this.inputBrpName))
+    this.filteredItems = this.responsible_parties.filter(
+      item => item.brpName.toLowerCase().includes(
+        this.inputBrpName.toLowerCase()
+      )
+    )
   }
+
   filterByBrpCode() {
-      this.filteredItems = this.responsible_parties.filter(item => item.brpCode.includes(this.inputBrpCode))
+    this.filteredItems = this.responsible_parties.filter(
+      item => item.brpCode.toLowerCase().includes(
+        this.inputBrpCode.toLowerCase()
+      )
+    )
   }
+
   filterByCodingScheme() {
-      this.filteredItems = this.responsible_parties.filter(item => item.codingScheme.includes(this.inputCodingScheme))
+    this.filteredItems = this.responsible_parties.filter(
+      item => item.codingScheme.toLowerCase().includes(
+        this.inputCodingScheme.toLowerCase()
+      )
+    )
   }
+
   filterByBusinessId() {
-      this.filteredItems = this.responsible_parties.filter(item => item.businessId.includes(this.inputBusinessId))
+    this.filteredItems = this.responsible_parties.filter(
+      item => item.businessId.toLowerCase().includes(
+        this.inputBusinessId.toLowerCase()
+      )
+    )
   }
+
   filterByCountry() {
-      this.filteredItems = this.responsible_parties.filter(item => item.country.includes(this.inputCountry))
+    this.filteredItems = this.responsible_parties.filter(
+      item => item.country.toLowerCase().includes(
+        this.inputCountry.toLowerCase()
+      )
+    )
   }
 }
