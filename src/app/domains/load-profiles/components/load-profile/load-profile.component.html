@@ -1,38 +1,55 @@
-<mat-label>Search MBA</mat-label>
-<input matInput placeholder="Filter MBA" [(ngModel)]="searchQuery">
-<h4>MBA:</h4>
-<mat-form-field>
-  <mat-label>Lista mba</mat-label>
-  <mat-select [(ngModel)]="selectedOption">
-    <mat-option *ngFor="let option of mbaOptions | filterOptions: searchQuery" [value]="option.code">
-      {{ option.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
 
-<h4>Fechas:</h4>
-<mat-form-field class="example-form-field">
-  <mat-label>First campaign</mat-label>
-  <mat-date-range-input
-    [formGroup]="campaignOne"
-    [rangePicker]="campaignOnePicker"
-    [comparisonStart]="campaignTwo.value.start"
-    [comparisonEnd]="campaignTwo.value.end">
-    <input matStartDate placeholder="Fecha inicial" formControlName="start">
-    <input matEndDate placeholder="Fecha final" formControlName="end">
-  </mat-date-range-input>
-  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
-  <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-</mat-form-field>
+<div class="load-profile__wrapper">
+  <div class="load-profile__main-title">
+    Load Profile
+  </div>
+  <div class="load-profile__card">
+    <div class="load-profile__form">
+      <h4 class="load-profile__title">MBA:</h4>
+      <input class="load-profile__input" placeholder="Filter MBA" [(ngModel)]="searchQuery">
+      <mat-form-field>
+        <mat-label>Mba list</mat-label>
+        <mat-select [(ngModel)]="selectedOption">
+          <mat-option *ngFor="let option of mbaOptions | filterOptions: searchQuery" [value]="option.code">
+            {{ option.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+    </div>
+    <div class="load-profile__form">
+      <h4 class="load-profile__title">Dates:</h4>
+      <mat-form-field class="example-form-field">
+        <mat-label>First campaign</mat-label>
+        <mat-date-range-input
+          [formGroup]="campaignOne"
+          [rangePicker]="campaignOnePicker"
+          [comparisonStart]="campaignTwo.value.start"
+          [comparisonEnd]="campaignTwo.value.end">
+          <input matStartDate placeholder="Fecha inicial" formControlName="start">
+          <input matEndDate placeholder="Fecha final" formControlName="end">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+      </mat-form-field>
+  
+    </div>
+    <div class="load-profile__form">
+      <h4 class="load-profile__title">Resolution:</h4>
+      <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select (selectionChange)="selectionChange($event)" #changeEl [value]="selectResolution">
+          @for (resolution of resolutions; track resolution) {
+            <mat-option [value]="resolution.value">{{resolution.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
 
-<h4>Resolution:</h4>
-<mat-form-field>
-  <mat-label>Select an option</mat-label>
-  <mat-select (selectionChange)="selectionChange($event)" #changeEl [value]="selectResolution">
-    @for (resolution of resolutions; track resolution) {
-      <mat-option [value]="resolution.value">{{resolution.viewValue}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
+</div>
+
+
+
 

@@ -11,7 +11,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Resolution } from '@models/resolution.model';
-import { FilterSelectDirective } from '@shared/directives/filter-select.directive';
 import { FilterOptionsPipe } from '@shared/pipes/filter-options.pipe';
 import { LoadProfileComponent } from '../../components/load-profile/load-profile.component';
 
@@ -24,7 +23,7 @@ const year = today.getFullYear();
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [CommonModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, FormsModule,
-    ReactiveFormsModule, FilterSelectDirective, FilterOptionsPipe, LoadProfileComponent] ,
+    ReactiveFormsModule, FilterOptionsPipe, LoadProfileComponent] ,
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })

@@ -1,0 +1,16 @@
+$primary-color: #0000ff;
+
+.list {
+  &__container{
+  padding: 1rem;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  }
+  &__wrapper{
+    display: flex;
+  }
+}
+
