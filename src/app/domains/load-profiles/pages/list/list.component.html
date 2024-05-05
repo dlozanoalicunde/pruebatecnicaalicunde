@@ -1,11 +1,10 @@
-<h4>MBA:</h4>
-<mat-form-field>
-  <mat-label>Lista mba</mat-label>
-
-  <mat-select>
-    @for (respMbaList of respMbaList(); track respMbaList) {
-      <mat-option [value]="respMbaList.code">{{respMbaList.name}}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>
-
+<div>
+  <app-load-profile
+    [mbaOptions]="respMbaList()"
+    [loadProfiles]="respLoadProfile()"
+    [selectResolution]="resolutionSignal()"
+    (selectionChange)="selectionChange($event)">
+  </app-load-profile>
+</div>
+<!-- [product] -->
+<!-- (addtocard) selectionchang -->
