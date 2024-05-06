@@ -30,6 +30,7 @@ const year = today.getFullYear();
 export default class LoadProfilePage {
 
   @ViewChild("changeEl") el!: ElementRef;
+  @ViewChild(FormComponent) formComponent!: FormComponent; // Obtener una referencia al componente FormComponent
 
   private loadProfileService = inject(LoadProfileService);
   respMbaOption = signal<MbaOptions[]>([]);
@@ -47,55 +48,23 @@ export default class LoadProfilePage {
   resolutionSignal = signal<string>('month');
   selectedMba:any;
 
-  campaignOne = new FormGroup({
-    start: new FormControl(new Date(year, month, 13)),
-    end: new FormControl(new Date(year, month, 16)),
-  });
-  campaignTwo = new FormGroup({
-    start: new FormControl(new Date(year, month, 15)),
-    end: new FormControl(new Date(year, month, 19)),
-  });
-
-
   ngAfterViewInit(): void {
     this.resolutionSignal.set(this.resolutions[1].value);
-
-    setTimeout(() => {
-      this.getAggregate();
+    // subscribe formChange then formComponent is init
+    this.formComponent.formChange.subscribe((formData: any) => {
+      // new data handle
+      this.handleFormChange(formData);
     });
   }
+
   ngOnInit(): void {
     this.resolutionSignal.set(this.resolutions[1].value);
-
     this.getMbaOptions();
-  }
-
-  private getAggregate() {
-    const start = this.campaignOne?.get('start')?.value;
-    const end = this.campaignOne?.get('end')?.value;
-    console.log('ingreso getAggregate end: ',end,);
-
-    const mba = '10Y1001A1001A44P';
-    const mga = 'ALS';
-
-    if (start && end) {
-      this.loadProfileService.getAggregate(end.toISOString(), 'string', 'ALS', this.resolutionSignal(), end.toISOString()).subscribe({
-        next: (aggregate) => {
-          console.log("aggregate ", aggregate);
-          this.respLoadProfile.set(aggregate);
-        },
-        error: (error) => {
-          console.error('Error fetching Aggregate options:', error);
-        }
-      });
-
-    } 
   }
 
   private getMbaOptions() {
     this.loadProfileService.getMba().subscribe({
       next: (mbaOptions) => {
-        console.log(mbaOptions);
         this.respMbaOption.set(mbaOptions);
         if (mbaOptions[0].mbas.length > 0) {
           this.respMbaList.set(mbaOptions[0].mbas)
@@ -107,10 +76,21 @@ export default class LoadProfilePage {
     });
   }
 
-  selectionChange(e: any) {
-    const newResolution = e.value.toString();
-    this.resolutionSignal.set(newResolution);
-    this.getAggregate();
+  // handledformchange form data (output)
+  handleFormChange(formData: any) {
+    const { mba, start, end, resolution } = formData;
+    
+    if (start && end) {
+      this.loadProfileService.getAggregate(end, mba, 'ALS', resolution, end).subscribe({
+        next: (aggregate) => {
+          this.respLoadProfile.set(aggregate);
+        },
+        error: (error) => {
+          console.error('Error fetching Aggregate options:', error);
+        }
+      });
+
+    } 
   }
 
 }

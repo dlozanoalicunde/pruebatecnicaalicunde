@@ -8,7 +8,7 @@
         [mbaOptions]="respMbaList()"
         [loadProfiles]="respLoadProfile()"
         [selectResolution]="resolutionSignal()"
-        (selectionChange)="selectionChange($event)">
+        (formChange)="handleFormChange($event)">
       </app-form>
       <app-table class="load-profile__content-table"
         [aggregateList]="respLoadProfile()">
