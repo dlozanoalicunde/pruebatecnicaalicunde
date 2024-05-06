@@ -84,14 +84,12 @@ export default class LoadProfilePage {
           console.log("aggregate ", aggregate);
           this.respLoadProfile.set(aggregate);
         },
-        error: () => {
-
+        error: (error) => {
+          console.error('Error fetching Aggregate options:', error);
         }
       });
 
-    } else {
-      console.log('no ingreso');
-    }
+    } 
   }
 
   private getMbaOptions() {
@@ -102,10 +100,9 @@ export default class LoadProfilePage {
         if (mbaOptions[0].mbas.length > 0) {
           this.respMbaList.set(mbaOptions[0].mbas)
         }
-
       },
-      error: () => {
-
+      error: (error) => {
+        console.error('Error fetching MBA options:', error);
       }
     });
   }
