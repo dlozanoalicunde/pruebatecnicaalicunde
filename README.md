@@ -25,3 +25,50 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Project Structure
+
+The project structure is organized as follows:
++---app
+|   +---core
+|   +---domains
+|   |   +---load-profiles
+|   |   |   +---components
+|   |   |   |   \---form.component
+|   |   |   |   \---table.component
+|   |   |   +---pages
+|   |   |   |   \---load-profile.page
+|   |   |   |   
+|   |   +---shared
+|   |   |   +---components
+|   |   |   |   +---layout
+|   |   |   +---directives
+|   |   |   +---models
+|   |   |   +---pipes
+|   |   |   +---services
+\---assets
+
+
+- **app**: Contains the main application code.
+  - **core**: Contains core modules, services, and utilities used across the application.
+  - **domains**: Contains domain-specific modules.
+    - **load-profiles**: Contains modules, components, and pages related to load profiles.
+      - **components**: Contains Angular components related to load profiles. (dumb components)
+        - **form.component**: Component for handling form input related to load profiles.
+        - **table.component**: Component for displaying load profiles data in a table format.
+      - **pages**: Contains Angular pages related to load profiles. (smart components)
+        - **load-profile.page**: Page component for displaying load profiles data.
+  - **shared**: Contains shared modules, components, directives, models, pipes, and services used across different domains.
+
+
+## Components
+
+The project includes various Angular components that serve different purposes within the application. Some of the key components include:
+
+- **Form Component**: Handles form input related to load profiles.
+- **Table Component**: Displays load profiles data in a tabular format.
+
+
+
+
