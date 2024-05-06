@@ -12,8 +12,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Resolution } from '@models/resolution.model';
 import { FilterOptionsPipe } from '@shared/pipes/filter-options.pipe';
-import { LoadProfileComponent } from '../../components/load-profile/load-profile.component';
-
+import { FormComponent } from '../../components/form/form.component';
+import {TableComponent} from '../../components/table/table.component';
 const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
@@ -23,11 +23,11 @@ const year = today.getFullYear();
   standalone: true,
   providers: [provideNativeDateAdapter()],
   imports: [CommonModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, FormsModule,
-    ReactiveFormsModule, FilterOptionsPipe, LoadProfileComponent] ,
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+    ReactiveFormsModule, FilterOptionsPipe, TableComponent, FormComponent] ,
+  templateUrl: './load-profile.page.html',
+  styleUrl: './load-profile.page.scss'
 })
-export default class ListComponent {
+export default class LoadProfilePage {
 
   @ViewChild("changeEl") el!: ElementRef;
 

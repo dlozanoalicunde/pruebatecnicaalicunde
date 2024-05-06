@@ -1,12 +1,10 @@
 
-<div class="load-profile__wrapper">
-  <div class="load-profile__main-title">
-    Load Profile
-  </div>
-  <div class="load-profile__card">
-    <div class="load-profile__form">
-      <h4 class="load-profile__title">MBA:</h4>
-      <input class="load-profile__input" placeholder="Filter MBA" [(ngModel)]="searchQuery">
+<div class="form__content">
+
+  <!-- <div class="form__card"> -->
+    <div class="form__form">
+      <h4 class="form__title">MBA:</h4>
+      <input class="form__input" placeholder="Filter MBA" [(ngModel)]="searchQuery">
       <mat-form-field>
         <mat-label>Mba list</mat-label>
         <mat-select [(ngModel)]="selectedOption">
@@ -17,8 +15,8 @@
       </mat-form-field>
   
     </div>
-    <div class="load-profile__form">
-      <h4 class="load-profile__title">Dates:</h4>
+    <div class="form__form">
+      <h4 class="form__title">Dates:</h4>
       <mat-form-field class="example-form-field">
         <mat-label>First campaign</mat-label>
         <mat-date-range-input
@@ -35,8 +33,8 @@
       </mat-form-field>
   
     </div>
-    <div class="load-profile__form">
-      <h4 class="load-profile__title">Resolution:</h4>
+    <div class="form__form">
+      <h4 class="form__title">Resolution:</h4>
       <mat-form-field>
         <mat-label>Select an option</mat-label>
         <mat-select (selectionChange)="selectionChange($event)" #changeEl [value]="selectResolution">
@@ -46,7 +44,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </div>
+  <!-- </div> -->
 
 </div>
 

@@ -8,7 +8,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/load-profiles/pages/list/list.component')
+        loadComponent: () => import('./domains/load-profiles/pages/load-profile/load-profile.page')
       }
     ]
 

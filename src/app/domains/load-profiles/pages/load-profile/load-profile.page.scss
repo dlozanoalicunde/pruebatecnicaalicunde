@@ -1,0 +1,78 @@
+// Variables
+$primary-color: #2E8B57;
+$background-color: #f5f2f0;
+$shadow-light: #ffffff;
+$shadow-dark: #e1dfdd;
+$text-primary: #000000;
+
+.load-profile {
+  // main container
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 3rem;
+    background-color: $primary-color;
+  }
+
+  // aggregate table content
+  &__content-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  // load profile form content
+  &__content-form {
+    display: flex;
+    width: 100%;
+  }
+
+  // main card
+  &__card {
+    display: flex;
+    padding: 1rem;
+    border-radius: 20px;
+    background: $background-color;
+    box-shadow: inset -20px -20px 8px $shadow-dark,
+                inset 20px 20px 8px $shadow-light;
+    width: 83%; 
+    gap: 1rem;
+
+    // Grid responsive (comentado por ahora)
+    @media screen and (min-width: 768px) {
+      width: 90%;
+    }
+  }
+
+  // Form list
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    margin-top: 1rem;
+  }
+
+  &__main-title {
+    padding: 1rem;
+    font-weight: 900;
+    font-size: 2rem;
+    color: $text-primary;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+  }
+}

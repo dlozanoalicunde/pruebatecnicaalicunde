@@ -1,4 +1,4 @@
-import { Resolution } from './resolution.model.model';
+import { Resolution } from './resolution.model';
 
 describe('Resolution', () => {
   it('should create an instance', () => {

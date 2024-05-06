@@ -1,12 +1,12 @@
 // Variables
-$primary-color: #617fef;
+$primary-color: #2E8B57;
 $background-color: #f5f2f0;
 $shadow-light: #ffffff;
 $shadow-dark: #e1dfdd;
 $text-primary: #000000;
 
-// Load Profile Component
-.load-profile {
+// Load Profile - form Component
+.form {
   &__container {
     display: flex;
     justify-content: center;
@@ -16,19 +16,16 @@ $text-primary: #000000;
     background-color: $primary-color;
   }
 
-  &__card {
+  &__content {
     display: grid;
     padding: 2rem;
     border-radius: 20px;
-    background: $background-color;
-    box-shadow: inset -20px -20px 8px $shadow-dark,
-                inset 20px 20px 8px $shadow-light;
-    width: 82%;
+    width: 100%;
     gap: 1rem;
 
     // Responsive grid
     @media screen and (min-width: 768px) {
-      width: 86%;
+      // width: 86%;
       grid-template-columns: repeat(3, 1fr);
     }
   }

@@ -8,20 +8,19 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FilterOptionsPipe } from '@shared/pipes/filter-options.pipe';
-import { Resolution } from '@models/resolution.model';
 
 const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
 
 @Component({
-  selector: 'app-load-profile',
+  selector: 'app-form',
   standalone: true,
   imports: [CommonModule, MatSelectModule, MatDatepickerModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, FilterOptionsPipe],
-  templateUrl: './load-profile.component.html',
-  styleUrl: './load-profile.component.scss'
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.scss'
 })
-export class LoadProfileComponent {
+export class FormComponent {
 
   @Input() mbaOptions: Mba[] = [];
   @Input() loadProfiles: LoadProfile[] = [];
