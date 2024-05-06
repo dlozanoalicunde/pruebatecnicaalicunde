@@ -1,5 +1,6 @@
 import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatSort } from '@angular/material/sort';
@@ -10,12 +11,13 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, MatTableModule, MatPaginatorModule, MatSort],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableComponent {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  @ViewChild('PaginatorAggregate') paginatorAggregate!: MatPaginator;
   @ViewChild('sortAggregate') sortAggregate!: MatSort;
 
   @Input() aggregateList!: LoadProfile[];
@@ -24,11 +26,11 @@ export class TableComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.aggregateList);
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginatorAggregate;
     this.dataSource.sort = this.sortAggregate;
   }
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginatorAggregate;
     this.dataSource.sort = this.sortAggregate;
   }
 

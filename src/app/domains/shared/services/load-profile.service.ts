@@ -29,7 +29,7 @@ export class LoadProfileService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.log(`failed: ${error.message}`);
+      console.error(`failed: ${error.message}`);
       return of(result as T);
     };
   }
