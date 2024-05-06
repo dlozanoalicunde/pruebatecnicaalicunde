@@ -1,0 +1,36 @@
+<div class="form__content" [formGroup]="profileForm">
+  <div class="form__form">
+    <h4 class="form__title">MBA:</h4>
+    <mat-form-field>
+      <mat-label>Mba list</mat-label>
+      <mat-select formControlName="mba">
+        <mat-option *ngFor="let option of mbaOptions" [value]="option.code">
+          {{ option.name }}
+        </mat-option>
+      </mat-select>
+      
+    </mat-form-field>
+  </div>
+  <div class="form__form">
+    <h4 class="form__title">Dates:</h4>
+    <mat-form-field class="example-form-field">
+      <mat-label>First campaign</mat-label>
+      <mat-date-range-input [rangePicker]="campaignOnePicker">
+        <input matStartDate placeholder="Fecha inicial" formControlName="start">
+        <input matEndDate placeholder="Fecha final" formControlName="end">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+      <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+  <div class="form__form">
+    <h4 class="form__title">Resolution:</h4>
+    <mat-form-field>
+      <mat-label>Select an option</mat-label>
+      <mat-select (selectionChange)="selectionChange($event)" formControlName="resolution">
+        <mat-option *ngFor="let resolution of resolutions" [value]="resolution.value">{{ resolution.viewValue }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

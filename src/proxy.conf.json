@@ -1,0 +1,9 @@
+{
+  "/node":{
+
+    "target":"https://api.opendata.esett.com",
+    "secure":false,
+    "changeOrigin": true,
+    "logLevel": "info"
+  }
+}

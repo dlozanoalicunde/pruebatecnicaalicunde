@@ -1,0 +1,46 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #sortAggregate="matSort" matSort>
+
+  <ng-container matColumnDef="timestamp">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Timestamp </th>
+    <td mat-cell *matCellDef="let element"> {{ element.timestamp | date: 'dd/MM/yyyy HH:mm:ss' }} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="timestampUTC">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Timestamp (UTC) </th>
+    <td mat-cell *matCellDef="let element"> {{ element.timestampUTC | date: 'dd/MM/yyyy HH:mm:ss' }} </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="mgaCode">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> MGA code </th>
+    <td mat-cell *matCellDef="let element"> {{element.mgaCode}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mgaName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> MGA Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.mgaName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="mba">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> MBA </th>
+    <td mat-cell *matCellDef="let element"> {{element.mba}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter o information"{{input.value}}"</td>
+  </tr>
+</table>
+<mat-paginator #paginatorAggregate [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccion page"></mat-paginator>

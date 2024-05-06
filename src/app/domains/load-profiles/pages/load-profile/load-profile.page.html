@@ -1,0 +1,20 @@
+<div class="load-profile__container">
+  <div class="load-profile__main-title">
+    Load Profile
+  </div>
+  <div class="load-profile__card"> 
+    <div class="load-profile__wrapper">
+      <app-form class="load-profile__content-form"
+        [mbaOptions]="respMbaList()"
+        [loadProfiles]="respLoadProfile()"
+        [selectResolution]="resolutionSignal()"
+        (formChange)="handleFormChange($event)">
+      </app-form>
+      <app-table class="load-profile__content-table"
+        [aggregateList]="respLoadProfile()">
+      </app-table>
+
+    </div>
+  </div>
+</div>
+
