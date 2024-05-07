@@ -1,0 +1,64 @@
+<div style="width: 90%; margin: auto; padding: 10px">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex: 	Aarhus Energy A/S"
+      #input
+    />
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="brpCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>brp Code</th>
+        <td mat-cell *matCellDef="let row">{{ row.brpCode }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="brpName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>brp Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.brpName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+        <td mat-cell *matCellDef="let row">{{ row.country }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="businessId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Business Id</th>
+        <td mat-cell *matCellDef="let row">{{ row.businessId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="codingScheme">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Coding Scheme</th>
+        <td mat-cell *matCellDef="let row">{{ row.codingScheme }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="validityStart">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Validity Start</th>
+        <td mat-cell *matCellDef="let row">{{ row.validityStart }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="validityEnd">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Validity End</th>
+        <td mat-cell *matCellDef="let row">{{ row.validityEnd }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[50, 100, 150, 200]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+</div>

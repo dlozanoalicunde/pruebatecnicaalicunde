@@ -1,57 +1,27 @@
-# Prueba Técnica para candidatos
+# PruebaAlicunde
 
-## Descripción
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
-Este repositorio contiene una prueba técnica para candidatos que deseen unirse a nuestro equipo de desarrollo backend y frontend. El objetivo de la prueba es evaluar las habilidades de los candidatos en el desarrollo de aplicaciones utilizando tecnologías como .NET, C#, SQL Server, Microservicios, Angular y TypeScript.
+## Development server
 
-## Instrucciones
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-### Candidatos Backend:
+## Code scaffolding
 
-1. Realizar un programa en .NET - C# que cumpla con los siguientes requisitos:
-    - Crear una clase y una función que consuma la siguiente API: [https://api.opendata.esett.com/](https://api.opendata.esett.com/). Puede escoger cualquier servicio proporcionado por la API.
-    - Almacenar la información obtenida en la base de datos.
-    - Implementar un controlador que permita filtrar por Primary Key en la base de datos.
-    - Construir una API REST con Swagger que permita visualizar los datos almacenados en la base de datos.
-    - Usar contenedores Docker para DDBB y la propia App
-    - Usa arquitectura hexagonal 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Candidatos Frontend:
+## Build
 
-1. Desarrollar una interfaz de usuario utilizando Angular y TypeScript que permita interactuar con la siguiente API: [https://api.opendata.esett.com/](https://api.opendata.esett.com/). Puede escoger cualquier servicio proporcionado por la API.
-    - Crear componentes de Angular para mostrar los datos almacenados en la base de datos.
-    - Implementar funcionalidades como búsqueda, filtrado, paginación de datos y ordenación por cualquier columna.
-    - Asegurarse de que la interfaz de usuario sea intuitiva y fácil de usar.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-### Criterios de evaluación:
+## Running unit tests
 
-Se valorará positivamente:
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-1. El uso de código limpio y buenas prácticas de programación tanto en el frontend como en el backend.
-2. Utilizar código generado a mano en lugar de depender excesivamente de herramientas de generación automática.
-3. Hacer commits frecuentes y bien explicados durante el desarrollo.
-4. Demostrar conocimientos en patrones de diseño, tanto en el frontend como en el backend.
-5. Gestion correcta de los secretos como cadenas de conexión, uasuarios, passwords...
+## Running end-to-end tests
 
-## Tecnologías utilizadas
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-### Backend:
-- .NET - C#
-- SQL Server
-- Microservicios (Hexagonal)
+## Further help
 
-### Frontend:
-- Angular
-- TypeScript
-
-## Estructura del repositorio
-
-No hay restricciones específicas sobre la estructura del repositorio. Los candidatos son libres de organizar su código de la manera que consideren más apropiada. Sin embargo, se recomienda seguir las convenciones de nomenclatura y estructura de proyecto estándar.
-
-## Recursos adicionales
-
-- Documentación oficial de Microsoft sobre [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0)
-- Documentación oficial de Microsoft sobre [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/)
-- Documentación oficial de Angular: [https://angular.io/docs](https://angular.io/docs)
-
-¡Buena suerte!
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

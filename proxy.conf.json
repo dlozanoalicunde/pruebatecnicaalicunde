@@ -1,0 +1,7 @@
+{
+    "/marketParties/*": {
+        "target": "https://api.opendata.esett.com/EXP01/BalanceResponsibleParties?country=FI",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
