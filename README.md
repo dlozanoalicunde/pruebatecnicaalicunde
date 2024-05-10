@@ -2,19 +2,20 @@
 
 ## Descripción
 
-Este repositorio contiene una prueba técnica para candidatos que deseen unirse a nuestro equipo de desarrollo backend y frontend. El objetivo de la prueba es evaluar las habilidades de los candidatos en el desarrollo de aplicaciones utilizando tecnologías como .NET, C#, SQL Server, Microservicios, Angular y TypeScript.
+Este repositorio contiene una prueba técnica para candidatos que deseen unirse a nuestro equipo de desarrollo backend y frontend. El objetivo de la prueba es evaluar las habilidades de los candidatos en el desarrollo de aplicaciones utilizando tecnologías como .NET, C#, SQL Server, Microservicios / MVC o Angular, NodeJS y TypeScript.
 
 ## Instrucciones
 
 ### Candidatos Backend:
 
 1. Realizar un programa en .NET - C# que cumpla con los siguientes requisitos:
-    - Crear una clase y una función que consuma la siguiente API: [https://api.opendata.esett.com/](https://api.opendata.esett.com/). Puede escoger cualquier servicio proporcionado por la API.
-    - Almacenar la información obtenida en la base de datos.
+    - Crear una clase y una función que consuma la siguiente API: [https://api.opendata.esett.com/](https://api.opendata.esett.com/). Escoge 1 servicio cualquiera de los proporcionados por la API.
+    - Almacena la información obtenida en la base de datos SQL Server (Usar un contenerdor Docker para la ddbb).
     - Implementar un controlador que permita filtrar por Primary Key en la base de datos.
     - Construir una API REST con Swagger que permita visualizar los datos almacenados en la base de datos.
     - Usar contenedores Docker para DDBB y la propia App
-    - Usa arquitectura hexagonal 
+    - Elige entre usar arquitectura hexagonal / MVC
+    - Elige entre usar CRUD o CQRS
 
 ### Candidatos Frontend:
 
@@ -38,11 +39,12 @@ Se valorará positivamente:
 ### Backend:
 - .NET - C#
 - SQL Server
-- Microservicios (Hexagonal)
+- Microservicios (Hexagonal) / MVC
 
 ### Frontend:
 - Angular
 - TypeScript
+- NodeJS
 
 ## Estructura del repositorio
 
