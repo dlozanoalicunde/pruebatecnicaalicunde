@@ -1,0 +1,137 @@
+<!-- Card header -->
+<div class="py-5 flex justify-between items-stretch flex-wrap min-h-[30px] pb-0 bg-transparent">
+    <!-- Aquí iria un app-filters con un componente filters reutilizable -->
+    <form action="#" method="POST" class="w-full">
+        <div class="grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-5 justify-between">
+            <div>
+                <label for="brp-name" class="block text-sm font-semibold leading-6 text-gray-900">BRP Name</label>
+                <div class="mt-2.5">
+                    <input type="text" name="brp-name" id="brp-name" placeholder="Arhus Energy A/S"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        [(ngModel)]="inputBrpName" (ngModelChange)="filterByBrpName()"
+                    >
+                </div>
+            </div>
+            <div>
+                <label for="brp-code" class="block text-sm font-semibold leading-6 text-gray-900">BRP Code</label>
+                <div class="mt-2.5">
+                    <input type="text" name="brp-code" id="brp-code" placeholder="7080010013545"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        [(ngModel)]="inputBrpCode" (ngModelChange)="filterByBrpCode()"
+                    >
+                </div>
+            </div>
+            <div>
+                <label for="coding-scheme" class="block text-sm font-semibold leading-6 text-gray-900">Coding Scheme</label>
+                <div class="mt-2.5">
+                    <input type="text" name="coding-scheme" id="coding-scheme" placeholder="GS1"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        [(ngModel)]="inputCodingScheme" (ngModelChange)="filterByCodingScheme()"
+                    >
+                </div>
+            </div>
+            <div>
+                <label for="business-id" class="block text-sm font-semibold leading-6 text-gray-900">Business ID</label>
+                <div class="mt-2.5">
+                    <input type="text" name="business-id" id="business-id" placeholder="44422778"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        [(ngModel)]="inputBusinessId" (ngModelChange)="filterByBusinessId()"
+                    >
+                </div>
+            </div>
+            <div>
+                <label for="country" class="block text-sm font-semibold leading-6 text-gray-900">Country</label>
+                <div class="mt-2.5">
+                    <input type="text" name="country" id="country" placeholder="DK"
+                        class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        [(ngModel)]="inputCountry" (ngModelChange)="filterByCountry()"
+                    >
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- End card header -->
+<!-- Card body  -->
+<div class="mx-auto py-5">
+    <div class="overflow-x-auto">
+        <!-- Aquí iria un app-table con un componente table reutilizable -->
+        <table class="w-full">
+            <thead>
+                <tr class="text-secondary-dark">
+                    <th 
+                        class="p-3 text-start min-w-[250px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('brpName')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'brpName' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        BRP Name
+                    </th>
+                    <th 
+                        class="p-3 text-start min-w-[200px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('brpCode')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'brpCode' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        BRP Code
+                    </th>
+                    <th 
+                        class="p-3 text-start min-w-[100px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('codingScheme')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'codingScheme' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Coding Scheme
+                    </th>
+                    <th 
+                        class="p-3 pr-12 text-start min-w-[150px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('businessId')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'businessId' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Business ID
+                    </th>
+                    <th 
+                        class="p-3 pr-12 text-start min-w-[100px] bg-gray-100 hover:bg-gray-200 cursor-pointer" 
+                        (click)="sort('country')"
+                    >
+                        <ng-icon name="{{orderIconToggle && sortBy == 'country' ? 'heroArrowDown' : 'heroArrowUp'}}"></ng-icon>
+                        Country
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let brp of filteredItems | orderBy: sortBy: sortOrder | paginate: { itemsPerPage: pageSize, currentPage: currentPage } let i=index" class="border-b border-dashed last:border-b-0">
+                    <td class="text-start p-3">
+                        <span>{{ brp.brpName }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.brpCode }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.codingScheme }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.businessId }}</span>
+                    </td>
+                    <td class="text-start p-3">
+                        <span>{{ brp.country }}</span>
+                    </td>
+                </tr>
+                <div *ngIf="filteredItems.length == 0">
+                    <h1>NOT FOUND ITEMS</h1>
+                </div>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="py-2">
+            <div class="hidden py-2 sm:flex sm:flex-1 sm:items-end sm:justify-between">
+                <div>
+                    <p class="text-sm text-gray-700">
+                        <!-- <span class="font-medium">Total items: {{ responsible_parties.length }}</span>
+                        <span class="px-2">-</span> -->
+                        <span class="font-medium">Filtered items: {{ filteredItems.length }}</span>
+                    </p>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="currentPage = $event" />
+        </div>
+    </div>
+</div>
