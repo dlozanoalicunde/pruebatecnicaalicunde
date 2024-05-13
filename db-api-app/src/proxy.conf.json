@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://api.opendata.esett.com/EXP01/Retailers",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

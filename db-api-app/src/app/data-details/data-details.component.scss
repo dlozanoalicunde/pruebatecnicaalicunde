@@ -1,0 +1,9 @@
+.data-details { 
+  &__wrapper {}
+
+  &__field {}
+
+  & mat-form-field.mat-mdc-form-field {
+    margin-right: 1em;
+  }
+}

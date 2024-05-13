@@ -1,0 +1,31 @@
+.data-list {
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 5%;
+
+    & mat-row.mat-mdc-row:hover {
+      background-color: azure;
+      cursor: pointer;
+    }
+      
+    & mat-row.mat-mdc-row.selectedRow {
+      background-color: aquamarine
+    }
+
+    & .table-container {
+      width: 70%;
+    }
+
+    & .right-content-container {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      padding: 0 2em;
+
+      & app-data-details {
+        margin-top: 5em;
+      }
+    }
+  } 
+}
